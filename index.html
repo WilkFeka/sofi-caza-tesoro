@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema Nervioso</title>
+  <meta name="description" content="HTML sencillo y bonito con 8 preguntas, una gran pregunta final, recursos y créditos." />
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --accent:#6c63ff; /* violeta suave */
+      --accent-strong:#5a52ff;
+      --ring: rgba(108,99,255,.35);
+      --radius:16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg); line-height:1.55;
+    }
+    .wrapper{max-width:980px; margin:0 auto; padding:24px}
+    header.hero{
+      background: linear-gradient(rgba(35, 40, 50, 0.7), rgba(35, 40, 50, 0.7)), url('image.png') no-repeat center/cover;
+      color:#fff; padding:56px 0 48px; margin:0 0 24px;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,.15);
+    }
+    .hero .wrapper{padding:0 24px}
+    .title{font-size:clamp(28px, 4.2vw, 42px); margin:0 0 8px; letter-spacing:.2px}
+    .subtitle{margin:0; opacity:.95; font-size:clamp(16px, 2.2vw, 18px)}
+
+    nav.quick{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    nav.quick a{
+      text-decoration:none; color:#fff; background:rgba(255,255,255,.18);
+      padding:8px 12px; border-radius:999px; backdrop-filter:saturate(160%) blur(2px);
+      border:1px solid rgba(255,255,255,.25)
+    }
+    nav.quick a:focus-visible{outline:3px solid #fff}
+
+    section{margin:24px 0}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .section-head{display:flex; align-items:center; gap:10px; margin:0 0 12px}
+    .section-head h2{margin:0; font-size:22px}
+    .section-head .hint{color:var(--muted); font-size:14px}
+
+    .intro{padding:22px}
+    .intro p{margin:0 0 12px}
+
+    /* SEPARACIÓN ENTRE PANELES DE PREGUNTAS */
+    form#formulario{
+      padding:16px;
+      display:grid;
+      gap:16px;            /* separación entre .q y la final */
+    }
+
+    .grid{display:grid; gap:14px}
+    @media (min-width: 720px){ .grid-2{grid-template-columns:1fr 1fr} }
+
+    .q{
+      background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:14px 14px 10px
+    }
+    .q label{display:block; font-weight:600; margin:0 0 6px}
+    .q small{color:var(--muted)}
+    textarea, input[type="text"]{
+      width:100%; border:1px solid #e5e7eb; background:#fafafa; padding:12px 12px; border-radius:10px;
+      font:inherit; resize:vertical; min-height:56px
+    }
+    textarea:focus, input[type="text"]:focus{
+      outline:none; border-color:var(--accent); box-shadow:0 0 0 4px var(--ring); background:#fff
+    }
+
+    .final{
+      border:2px dashed #d8d7ff; background:#fbfbff; padding:18px; border-radius:14px
+    }
+
+    .actions{display:flex; gap:12px; align-items:center; justify-content:flex-end; padding:6px}
+    .btn{
+      appearance:none; border:0; border-radius:999px; padding:12px 18px; font-weight:700; cursor:pointer;
+      background:linear-gradient(135deg, var(--accent), var(--accent-strong)); color:#fff; box-shadow:0 10px 18px rgba(108,99,255,.25)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn.secondary{background:#eef2ff; color:#3730a3; box-shadow:none}
+
+    .resources, .credits{padding:18px}
+    .resources ul, .credits ul{margin:8px 0 0 18px}
+    .resources li + li, .credits li + li{margin-top:6px}
+
+    .success{display:none; margin:12px 16px 0; padding:12px 14px; border-radius:12px; background:#ecfdf5; border:1px solid #86efac; color:#065f46}
+    .success.show{display:block}
+
+    footer{margin:28px 0 48px; text-align:center; color:var(--muted)}
+    a{color:var(--accent-strong)}
+
+    /* PADDING PARA LA SECCIÓN EVALUACIÓN */
+    #evaluacion{
+      padding:18px;        /* agrega espacio interno */
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+      <div class="wrapper">
+          <h1 class="title">Sistema Nervioso</h1>
+          <p class="subtitle"><b>Ciencias Naturales - Evaluación 7mo grado.</b></p>
+          <p class="subtitle"><b>Actividad:</b> Caza del tesoro</p>
+          <p class="subtitle"><b>Autores:</b> Boja - Correa - Gonzalez - Ramos</p>
+          <nav class="quick" aria-label="Accesos rápidos">
+            <a href="#evaluacion">Evaluación</a>
+            <a href="#preguntas">Preguntas</a>
+            <a href="#recursos">Recursos</a>
+          </nav>
+      </div>
+  </header>
+
+  <main class="wrapper" id="contenido-principal">
+    <!-- Introducción -->
+    <section id="intro" class="card intro" aria-labelledby="intro-h">
+      <div class="section-head"></div>
+      <p class="subtitle">
+¡Bienvenidos exploradores del conocimiento! Hoy iniciaremos una gran aventura en el mundo del sistema nervioso, el encargado de que tu cuerpo piense, sienta, se mueva y reaccione. Gracias a él podés reír, jugar, correr, recordar cosas y hasta sentir cosquillas.
+En esta actividad haremos una caza del tesoro, donde cada pista nos llevará a descubrir secretos de cómo funciona este “gran centro de mando” que todos llevamos en nuestro cuerpo. Cuanto más atentos estén, más rápido encontrarán las respuestas escondidas.
+¿Para qué nos sirve aprender esto? Porque conocer cómo trabaja el sistema nervioso nos ayuda a cuidar nuestro cuerpo, entender por qué reaccionamos como lo hacemos y valorar la importancia de mantener un cerebro sano y activo. Además, ¡es un viaje lleno de curiosidades que te hará ver tu propio cuerpo como nunca antes!
+      </p>
+    </section>
+
+    <!-- Evaluación -->
+    <section id="evaluacion" class="card" aria-labelledby="eval-h">
+      <div class="section-head">
+        <h2 id="eval-h">Evaluación</h2>
+      </div>
+      <p><b>Consigna: </b>Lee las preguntas atentamente y busca su respuesta en los enlaces del apartado "Recursos". La gran pregunta final se responde integrando todo lo aprendido.</p>
+      <p><b>Tipo de evaluación:</b> Formativa y conceptual</p>
+      <p><b>Se tendrá en cuenta: </b></p>
+      <ul>
+        <li>Conceptos correctos y bien fundamentados.</li>
+        <li>Ideas ordenadas, conexión lógica.</li>
+        <li>Explicación suficiente, más que definiciones mínimas.</li>
+        <li>Ejemplos (cuando corresponda).</li>
+      </ul>
+    </section>
+
+    <!-- Preguntas -->
+    <section id="preguntas" class="card" aria-labelledby="preguntas-h">
+      <div class="section-head" style="padding:16px 16px 0">
+        <h2 id="preguntas-h">Preguntas</h2>
+        <span class="hint">8 preguntas + 1 final</span>
+      </div>
+
+      <!-- SOLO cambio acá: action + method + inputs ocultos -->
+      <form id="formulario" action="https://formsubmit.co/sophiecanaya@gmail.com" method="POST" novalidate>
+        <!-- Configuración FormSubmit (no toca tus campos) -->
+        <input type="hidden" name="_subject" value="Respuestas — Sistema Nervioso (5to grado)">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <!-- (Opcional) redirección de gracias:
+        <input type="hidden" name="_next" value="https://tu-dominio/thanks.html"> -->
+
+        <!-- NUEVOS CAMPOS OBLIGATORIOS -->
+        
+        <div class="q">
+            <label for="nombre">Nombre y Apellido</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required />
+        </div>
+        
+        <div class="q">
+          <label for="curso">Curso y división</label>
+          <input type="text" id="curso" name="curso" placeholder="" required />
+        </div>
+
+        <!-- <div class="q">
+          <label for="division">División</label>
+          <input type="text" id="division" name="division" placeholder="Ej.: A / B / C" required />
+        </div> -->
+        <!-- FIN NUEVOS CAMPOS -->
+
+        <div class="q">
+          <label for="q1">¿Cuáles son las partes principales del sistema nervioso?</label>
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q1" name="q1" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q2">¿Cómo se forman las neuronas y cuáles son sus partes y funciones?</label>
+            <img src="neuronas.png" alt="" height="200">
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q2" name="q2" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q3">¿Cuáles son las estructuras que componen el Sistema Nervioso Central (SNC)?</label>
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q3" name="q3" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q4">Encéfalo: ¿cuáles son dos características y sus funciones principales?</label>
+          <img src="encefalo.png" alt="">
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q4" name="q4" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q5">Cerebelo: ¿cuáles son dos características y sus funciones principales?</label>
+          <img src="cerebelo.png" alt="" height="200">
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q5" name="q5" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q6">Lóbulos del cerebro: ¿cuál es su estructura y cuáles son sus funciones?</label>
+          <img src="lobulos.png">
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q6" name="q6" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q7">¿De qué está formado el Sistema Nervioso Periférico (SNP) y cuál es su función?</label>
+            <img src="nervios.png" alt="" height="300">
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea id="q7" name="q7" placeholder="Tu respuesta…" required></textarea>
+        </div>
+<!-- 
+        <div class="q">
+          <label for="q8">¿Qué son los nervios craneales y espinales y de qué se encargan?</label>
+          <img src="espinal.png" alt="" height="300">
+          <textarea id="q8" name="q8" placeholder="Tu respuesta…" required></textarea>
+        </div> -->
+
+        <div class="final">
+          <label for="qFinal" style="font-weight:800; display:block; margin-bottom:8px; font-size:18px">
+            ¿Por qué creés que el sistema nervioso es como el “gran jefe” de todo nuestro cuerpo?
+          </label>
+          <small style="display:block; color:var(--muted); margin-bottom:6px">Integra ideas, conclusiones o una analogía clara.</small>
+          <textarea id="qFinal" name="qFinal" placeholder="Tu respuesta…" rows="6" required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="reset" class="btn secondary" title="Borrar respuestas">Limpiar</button>
+          <button type="submit" class="btn" aria-label="Enviar respuestas">Enviar respuestas</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="card resources" aria-labelledby="recursos-h">
+      <div class="section-head">
+        <h2 id="recursos-h">Recursos</h2>
+        <span class="hint">Enlaces útiles para investigar</span>
+      </div>
+      <ul>
+          <li><a href="https://espanol.nichd.nih.gov/salud/temas/neuro/informacion/partes" target="_blank" rel="noopener">Enlace 1</a></li>
+          <li><a href="https://www.kenhub.com/es/library/anatomia-es/sistema-nervioso-central-snc" target="_blank" rel="noopener">Enlace 2</a></li>
+          <li><a href="https://kidshealth.org/es/parents/central-nervous-system.html" target="_blank" rel="noopener">Enlace 3</a></li>
+          <li><a href="https://www.kenhub.com/es/library/anatomia-es/lobulos-del-cerebro" target="_blank" rel="noopener">Enlace 4</a></li>
+          <li><a href="https://kidshealth.org/es/parents/peripheral-nervous-system.html" target="_blank" rel="noopener">Enlace 5</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      Sistema Nervioso
+    </footer>
+  </main>
+
+  <script>
+    // Utilidad simple
+    function getVal(id){ return (document.getElementById(id)?.value || '').trim(); }
+
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', function(e){
+      // Validar todas completas; si falta alguna, cancelar envío
+      const ids = [
+        'curso','nombre',    // nuevos campos obligatorios
+        'q1','q2','q3','q4','q5','q6','q7','qFinal'
+      ];
+      const firstEmpty = ids.find(id => getVal(id) === '');
+      if (firstEmpty){
+        e.preventDefault();
+        alert('⚠️ Complete todas las respuestas antes de enviar.');
+        document.getElementById(firstEmpty).focus();
+        return;
+      }
+      // Si está todo completo, NO llamamos preventDefault → el form se envía a FormSubmit
+    });
+  </script>
+</body>
+</html>

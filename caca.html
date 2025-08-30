@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cuestionario — Sistema Nervioso</title>
+  <meta name="description" content="HTML sencillo y bonito con 8 preguntas, una gran pregunta final, recursos y créditos." />
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --accent:#6c63ff; /* violeta suave */
+      --accent-strong:#5a52ff;
+      --ring: rgba(108,99,255,.35);
+      --radius:16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg); line-height:1.55;
+    }
+    .wrapper{max-width:980px; margin:0 auto; padding:24px}
+    header.hero{
+      background: radial-gradient(1100px 340px at 20% -10%, #a29bff33, transparent 60%),
+                  linear-gradient(135deg, #6c63ff 0%, #8b7bff 100%);
+      color:#fff; padding:56px 0 48px; margin:0 0 24px;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,.15);
+    }
+    .hero .wrapper{padding:0 24px}
+    .title{font-size:clamp(28px, 4.2vw, 42px); margin:0 0 8px; letter-spacing:.2px}
+    .subtitle{margin:0; opacity:.95; font-size:clamp(16px, 2.2vw, 18px)}
+
+    nav.quick{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    nav.quick a{
+      text-decoration:none; color:#fff; background:rgba(255,255,255,.18);
+      padding:8px 12px; border-radius:999px; backdrop-filter:saturate(160%) blur(2px);
+      border:1px solid rgba(255,255,255,.25)
+    }
+    nav.quick a:focus-visible{outline:3px solid #fff}
+
+    section{margin:24px 0}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .section-head{display:flex; align-items:center; gap:10px; margin:0 0 12px}
+    .section-head h2{margin:0; font-size:22px}
+    .section-head .hint{color:var(--muted); font-size:14px}
+
+    .intro{padding:22px}
+    .intro p{margin:0 0 12px}
+
+    form#formulario{padding:16px}
+    .grid{display:grid; gap:14px}
+    @media (min-width: 720px){ .grid-2{grid-template-columns:1fr 1fr} }
+
+    .q{background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:14px 14px 10px}
+    .q label{display:block; font-weight:600; margin:0 0 6px}
+    .q small{color:var(--muted)}
+    textarea, input[type="text"]{
+      width:100%; border:1px solid #e5e7eb; background:#fafafa; padding:12px 12px; border-radius:10px;
+      font:inherit; resize:vertical; min-height:56px
+    }
+    textarea:focus, input[type="text"]:focus{
+      outline:none; border-color:var(--accent); box-shadow:0 0 0 4px var(--ring); background:#fff
+    }
+
+    .final{border:2px dashed #d8d7ff; background:#fbfbff; padding:18px; border-radius:14px}
+
+    .actions{display:flex; gap:12px; align-items:center; justify-content:flex-end; padding:6px}
+    .btn{
+      appearance:none; border:0; border-radius:999px; padding:12px 18px; font-weight:700; cursor:pointer;
+      background:linear-gradient(135deg, var(--accent), var(--accent-strong)); color:#fff; box-shadow:0 10px 18px rgba(108,99,255,.25)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn.secondary{background:#eef2ff; color:#3730a3; box-shadow:none}
+
+    .resources, .credits{padding:18px}
+    .resources ul, .credits ul{margin:8px 0 0 18px}
+    .resources li + li, .credits li + li{margin-top:6px}
+
+    .success{display:none; margin:12px 16px 0; padding:12px 14px; border-radius:12px; background:#ecfdf5; border:1px solid #86efac; color:#065f46}
+    .success.show{display:block}
+
+    footer{margin:28px 0 48px; text-align:center; color:var(--muted)}
+    a{color:var(--accent-strong)}
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="wrapper">
+      <h1 class="title">Cuestionario — Sistema Nervioso</h1>
+      <p class="subtitle">8 preguntas + una gran pregunta final, recursos y créditos — todo en un único archivo HTML.</p>
+      <nav class="quick" aria-label="Accesos rápidos">
+        <a href="#intro">Introducción</a>
+        <a href="#evaluacion">Evaluación</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#creditos">Créditos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper" id="contenido-principal">
+    <!-- Introducción -->
+    <section id="intro" class="card intro" aria-labelledby="intro-h">
+      <div class="section-head">
+        <h2 id="intro-h">Introducción</h2>
+        <span class="hint">Breve contexto para guiar al participante</span>
+      </div>
+      <p>Este cuestionario está diseñado para ayudarte a reflexionar y aprender sobre el sistema nervioso. Responde cada pregunta con tus palabras y usa la sección de recursos si necesitas investigar más.</p>
+    </section>
+
+    <!-- Evaluación (debajo de Introducción) -->
+    <section id="evaluacion" class="card" aria-labelledby="eval-h">
+      <div class="section-head">
+        <h2 id="eval-h">Evaluación</h2>
+        <span class="hint">Criterios que guiarán la corrección</span>
+      </div>
+      <ul>
+        <li><strong>Exactitud científica:</strong> conceptos correctos y bien fundamentados.</li>
+        <li><strong>Claridad y coherencia:</strong> ideas ordenadas, conexión lógica.</li>
+        <li><strong>Vocabulario específico:</strong> uso de términos como <em>neurona</em>, <em>axón</em>, <em>sinapsis</em>, <em>SNC</em>, <em>SNP</em>.</li>
+        <li><strong>Profundidad:</strong> explicación suficiente, más que definiciones mínimas.</li>
+        <li><strong>Ejemplos o analogías:</strong> cuando corresponda.</li>
+        <li><strong>Fuentes:</strong> mencionar recursos consultados (ver Recursos).</li>
+        <li><strong>Presentación:</strong> ortografía y redacción cuidadas.</li>
+      </ul>
+    </section>
+
+    <!-- Preguntas (una debajo de la otra) -->
+    <section id="preguntas" class="card" aria-labelledby="preguntas-h">
+      <div class="section-head" style="padding:16px 16px 0">
+        <h2 id="preguntas-h">Preguntas</h2>
+        <span class="hint">8 preguntas + 1 final</span>
+      </div>
+
+      <form id="formulario" novalidate>
+        <!-- 1 a 8 en una sola columna -->
+        <div class="q">
+          <label for="q1">¿Cuáles son las partes principales del sistema nervioso?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q1" name="q1" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q2">¿Cómo se forman las neuronas y cuáles son sus partes y funciones?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q2" name="q2" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q3">¿Cuáles son las estructuras que componen el Sistema Nervioso Central (SNC)?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q3" name="q3" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q4">Encéfalo: ¿cuáles son dos características y sus funciones principales?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q4" name="q4" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q5">Cerebelo: ¿cuáles son dos características y sus funciones principales?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q5" name="q5" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q6">Lóbulos del cerebro: ¿cuál es su estructura y cuáles son sus funciones?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q6" name="q6" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q7">¿De qué está formado el Sistema Nervioso Periférico (SNP) y cuál es su función?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q7" name="q7" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <div class="q">
+          <label for="q8">¿Qué son los nervios craneales y espinales y de qué se encargan?</label>
+          <small>Escribe tu respuesta</small>
+          <textarea id="q8" name="q8" placeholder="Tu respuesta…" required></textarea>
+        </div>
+
+        <!-- Gran Pregunta Final -->
+        <div class="final" style="margin-top:16px">
+          <label for="qFinal" style="font-weight:800; display:block; margin-bottom:8px; font-size:18px">
+            ¿Por qué creés que el sistema nervioso es como el “gran jefe” de todo nuestro cuerpo?
+          </label>
+          <small style="display:block; color:var(--muted); margin-bottom:6px">Integra ideas, conclusiones o una analogía clara.</small>
+          <textarea id="qFinal" name="qFinal" placeholder="Tu respuesta principal…" rows="6" required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="reset" class="btn secondary" title="Borrar respuestas">Limpiar</button>
+          <button type="submit" class="btn" aria-label="Enviar respuestas">Enviar respuestas</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="card resources" aria-labelledby="recursos-h">
+      <div class="section-head">
+        <h2 id="recursos-h">Recursos</h2>
+        <span class="hint">Enlaces útiles para investigar</span>
+      </div>
+      <ul>
+        <li><a href="https://es.wikipedia.org/wiki/Sistema_nervioso" target="_blank" rel="noopener">Wikipedia - Sistema nervioso</a></li>
+        <li><a href="https://medlineplus.gov/spanish/ency/article/002311.htm" target="_blank" rel="noopener">MedlinePlus (ES) - Sistema nervioso</a></li>
+        <li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a></li>
+      </ul>
+    </section>
+
+    <!-- Créditos -->
+    <section id="creditos" class="card credits" aria-labelledby="creditos-h">
+      <div class="section-head">
+        <h2 id="creditos-h">Créditos</h2>
+        <span class="hint">Fuentes de imágenes, íconos u otros recursos</span>
+      </div>
+      <ul>
+        <li>Imágenes: <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a> / <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a> (<a href="https://www.unsplash.com/license" target="_blank" rel="noopener">licencias</a>)</li>
+        <li>Íconos: <a href="https://lucide.dev/" target="_blank" rel="noopener">Lucide</a> / <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener">Bootstrap Icons</a></li>
+        <li>Tipografías del sistema (sin fuentes externas).</li>
+      </ul>
+    </section>
+
+    <footer>
+      Hecho con HTML, CSS y un toque de JS — local, sin envíos a servidor.
+    </footer>
+  </main>
+
+  <script>
+    // JS mínimo: evita envío real y muestra una confirmación simple.
+    const form = document.getElementById('formulario');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('✅ Respuestas registradas localmente. Puedes copiarlas para guardarlas.');
+    });
+  </script>
+</body>
+</html>
