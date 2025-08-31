@@ -106,7 +106,7 @@
   <header class="hero" role="banner">
       <div class="wrapper">
           <h1 class="title">Sistema Nervioso</h1>
-          <p class="subtitle"><b>Ciencias Naturales - Evaluación 7mo grado.</b></p>
+          <p class="subtitle"><b>Ciencias Naturales - Evaluación 6to grado.</b></p>
           <p class="subtitle"><b>Actividad:</b> Caza del tesoro</p>
           <p class="subtitle"><b>Autores:</b> Boja - Correa - Gonzalez - Ramos</p>
           <nav class="quick" aria-label="Accesos rápidos">
@@ -154,7 +154,7 @@ En esta actividad haremos una caza del tesoro, donde cada pista nos llevará a d
       <!-- SOLO cambio acá: action + method + inputs ocultos -->
       <form id="formulario" action="https://formsubmit.co/sophiecanaya@gmail.com" method="POST" novalidate>
         <!-- Configuración FormSubmit (no toca tus campos) -->
-        <input type="hidden" name="_subject" value="Respuestas — Sistema Nervioso (5to grado)">
+        <input type="hidden" name="_subject" value="Respuestas — Sistema Nervioso (6to grado)">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <!-- (Opcional) redirección de gracias:
@@ -179,50 +179,50 @@ En esta actividad haremos una caza del tesoro, donde cada pista nos llevará a d
         <!-- FIN NUEVOS CAMPOS -->
 
         <div class="q">
-          <label for="q1">¿Cuáles son las partes principales del sistema nervioso?</label>
+          <label for="pregunta-1">¿Cuáles son las partes principales del sistema nervioso?</label>
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q1" name="q1" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-1" name="pregunta-1" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q2">¿Cómo se forman las neuronas y cuáles son sus partes y funciones?</label>
+          <label for="pregunta-2">¿Cómo se forman las neuronas y cuáles son sus partes y funciones?</label>
             <img src="neuronas.png" alt="" height="200">
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q2" name="q2" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-2" name="pregunta-2" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q3">¿Cuáles son las estructuras que componen el Sistema Nervioso Central (SNC)?</label>
+          <label for="pregunta-3">¿Cuáles son las estructuras que componen el Sistema Nervioso Central (SNC)?</label>
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q3" name="q3" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-3" name="pregunta-3" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q4">Encéfalo: ¿cuáles son dos características y sus funciones principales?</label>
+          <label for="pregunta-4">Encéfalo: ¿cuáles son dos características y sus funciones principales?</label>
           <img src="encefalo.png" alt="">
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q4" name="q4" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-4" name="pregunta-4" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q5">Cerebelo: ¿cuáles son dos características y sus funciones principales?</label>
+          <label for="pregunta-5">Cerebelo: ¿cuáles son dos características y sus funciones principales?</label>
           <img src="cerebelo.png" alt="" height="200">
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q5" name="q5" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-5" name="pregunta-5" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q6">Lóbulos del cerebro: ¿cuál es su estructura y cuáles son sus funciones?</label>
+          <label for="pregunta-6">Lóbulos del cerebro: ¿cuál es su estructura y cuáles son sus funciones?</label>
           <img src="lobulos.png">
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q6" name="q6" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-6" name="pregunta-6" placeholder="Tu respuesta…" required></textarea>
         </div>
 
         <div class="q">
-          <label for="q7">¿De qué está formado el Sistema Nervioso Periférico (SNP) y cuál es su función?</label>
+          <label for="pregunta-7">¿De qué está formado el Sistema Nervioso Periférico (SNP) y cuál es su función?</label>
             <img src="nervios.png" alt="" height="300">
           <!-- <small>Escribe tu respuesta</small> -->
-          <textarea id="q7" name="q7" placeholder="Tu respuesta…" required></textarea>
+          <textarea id="pregunta-7" name="pregunta-7" placeholder="Tu respuesta…" required></textarea>
         </div>
 <!-- 
         <div class="q">
@@ -232,11 +232,11 @@ En esta actividad haremos una caza del tesoro, donde cada pista nos llevará a d
         </div> -->
 
         <div class="final">
-          <label for="qFinal" style="font-weight:800; display:block; margin-bottom:8px; font-size:18px">
+          <label for="pregunta-final" style="font-weight:800; display:block; margin-bottom:8px; font-size:18px">
             ¿Por qué creés que el sistema nervioso es como el “gran jefe” de todo nuestro cuerpo?
           </label>
           <small style="display:block; color:var(--muted); margin-bottom:6px">Integra ideas, conclusiones o una analogía clara.</small>
-          <textarea id="qFinal" name="qFinal" placeholder="Tu respuesta…" rows="6" required></textarea>
+          <textarea id="pregunta-final" name="pregunta-final" placeholder="Tu respuesta…" rows="6" required></textarea>
         </div>
 
         <div class="actions">
@@ -276,7 +276,7 @@ En esta actividad haremos una caza del tesoro, donde cada pista nos llevará a d
       // Validar todas completas; si falta alguna, cancelar envío
       const ids = [
         'curso','nombre',    // nuevos campos obligatorios
-        'q1','q2','q3','q4','q5','q6','q7','qFinal'
+        'pregunta-1','pregunta-2','pregunta-3','pregunta-4','pregunta-5','pregunta-6','pregunta-7','pregunta-final'
       ];
       const firstEmpty = ids.find(id => getVal(id) === '');
       if (firstEmpty){
