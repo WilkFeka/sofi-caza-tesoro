@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema Nervioso</title>
+  <meta name="description" content="HTML sencillo y bonito con 8 preguntas, una gran pregunta final, recursos y créditos." />
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --accent:#6c63ff; /* violeta suave */
+      --accent-strong:#5a52ff;
+      --ring: rgba(108,99,255,.35);
+      --radius:16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg); line-height:1.55;
+    }
+    .wrapper{max-width:980px; margin:0 auto; padding:24px}
+    header.hero{
+      background: linear-gradient(rgba(35, 40, 50, 0.7), rgba(35, 40, 50, 0.7)), url('rosario.png') no-repeat center/cover;
+      color:#fff; padding:56px 0 48px; margin:0 0 24px;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,.15);
+    }
+    .hero .wrapper{padding:0 24px}
+    .title{font-size:clamp(28px, 4.2vw, 42px); margin:0 0 8px; letter-spacing:.2px}
+    .subtitle{margin:0; opacity:.95; font-size:clamp(16px, 2.2vw, 18px)}
+
+    nav.quick{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    nav.quick a{
+      text-decoration:none; color:#fff; background:rgba(255,255,255,.18);
+      padding:8px 12px; border-radius:999px; backdrop-filter:saturate(160%) blur(2px);
+      border:1px solid rgba(255,255,255,.25)
+    }
+    nav.quick a:focus-visible{outline:3px solid #fff}
+
+    section{margin:24px 0}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .section-head{display:flex; align-items:center; gap:10px; margin:0 0 12px}
+    .section-head h2{margin:0; font-size:22px}
+    .section-head .hint{color:var(--muted); font-size:14px}
+
+    .intro{padding:22px}
+    .intro p{margin:0 0 12px}
+
+    /* SEPARACIÓN ENTRE PANELES DE PREGUNTAS */
+    form#formulario{
+      padding:16px;
+      display:grid;
+      gap:16px;            /* separación entre .q y la final */
+    }
+
+    .grid{display:grid; gap:14px}
+    @media (min-width: 720px){ .grid-2{grid-template-columns:1fr 1fr} }
+
+    .q{
+      background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:14px 14px 10px
+    }
+    .q label{display:block; font-weight:600; margin:0 0 6px}
+    .q small{color:var(--muted)}
+    textarea, input[type="text"]{
+      width:100%; border:1px solid #e5e7eb; background:#fafafa; padding:12px 12px; border-radius:10px;
+      font:inherit; resize:vertical; min-height:56px
+    }
+    textarea:focus, input[type="text"]:focus{
+      outline:none; border-color:var(--accent); box-shadow:0 0 0 4px var(--ring); background:#fff
+    }
+
+    .final{
+      border:2px dashed #d8d7ff; background:#fbfbff; padding:18px; border-radius:14px
+    }
+
+    .actions{display:flex; gap:12px; align-items:center; justify-content:flex-end; padding:6px}
+    .btn{
+      appearance:none; border:0; border-radius:999px; padding:12px 18px; font-weight:700; cursor:pointer;
+      background:linear-gradient(135deg, var(--accent), var(--accent-strong)); color:#fff; box-shadow:0 10px 18px rgba(108,99,255,.25)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn.secondary{background:#eef2ff; color:#3730a3; box-shadow:none}
+
+    .resources, .credits{padding:18px}
+    .resources ul, .credits ul{margin:8px 0 0 18px}
+    .resources li + li, .credits li + li{margin-top:6px}
+
+    .success{display:none; margin:12px 16px 0; padding:12px 14px; border-radius:12px; background:#ecfdf5; border:1px solid #86efac; color:#065f46}
+    .success.show{display:block}
+
+    footer{margin:28px 0 48px; text-align:center; color:var(--muted)}
+    a{color:var(--accent-strong)}
+
+    /* PADDING PARA LA SECCIÓN EVALUACIÓN */
+    #evaluacion{
+      padding:18px;        /* agrega espacio interno */
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+      <div class="wrapper">
+          <h1 class="title">Teatro el Círculo</h1>
+          <p class="subtitle"><b>5to grado.</b></p>
+          <p class="subtitle"><b>Actividad:</b> Caza del tesoro</p>
+          <p class="subtitle"><b>Autor:</b> Boja Sofia</p>
+          <!-- <nav class="quick" aria-label="Accesos rápidos">
+            <a href="#evaluacion">Evaluación</a>
+            <a href="#preguntas">Preguntas</a>
+            <a href="#recursos">Recursos</a>
+          </nav> -->
+      </div>
+  </header>
+
+  <main class="wrapper" id="contenido-principal">
+    <!-- Introducción -->
+    <section id="intro" class="card intro" aria-labelledby="intro-h">
+      <div class="section-head"></div>
+      <p class="subtitle" style="display: flex; align-items: center; justify-content: center;">
+        <img src="espania.png" alt="">
+      </p>
+    </section>
+
+    <!-- Evaluación -->
+    <section id="evaluacion" class="card" aria-labelledby="eval-h">
+      <div class="section-head">
+        <h2 id="eval-h">Informacion</h2>
+      </div>
+      <p>
+ El Teatro El Círculo es uno de los edificios más importantes de la ciudad de Rosario. Está ubicado en el centro, en la esquina de las calles Laprida y Mendoza. Es muy conocido por ser un lugar donde se presentan obras de teatro, conciertos y espectáculos de todo tipo. Fue inaugurado hace más de 100 años, en el año 1904, con una gran ópera llamada Otello.
+Por dentro, el teatro es muy grande y hermoso. Tiene una sala principal con forma de herradura, muchos pisos, decoraciones doradas y un techo pintado con imágenes artísticas. Además, suena tan bien que muchos músicos famosos han dicho que es uno de los teatros con mejor acústica del mundo.
+Visitar el Teatro El Círculo es como hacer un viaje en el tiempo. Nos ayuda a conocer cómo eran los espectáculos de antes y cómo la gente disfrutaba del arte y la música. Por todo esto, fue declarado Monumento Histórico Nacional. Es un verdadero orgullo para la ciudad de Rosario.
+
+      </p>
+    </section>
+
+    <!-- Preguntas -->
+    <section id="preguntas" class="card" aria-labelledby="preguntas-h">
+      <div class="section-head" style="padding:16px 16px 0">
+        <h2 id="preguntas-h">Preguntas</h2>
+        <span class="hint">8 preguntas + 1 final</span>
+      </div>
+
+      <!-- SOLO cambio acá: action + method + inputs ocultos -->
+      <form id="formulario" action="https://formsubmit.co/sophiecanaya@gmail.com" method="POST" novalidate>
+        <!-- Configuración FormSubmit (no toca tus campos) -->
+        <input type="hidden" name="_subject" value="Respuestas — Sistema Nervioso (6to grado)">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <!-- (Opcional) redirección de gracias:
+        <input type="hidden" name="_next" value="https://tu-dominio/thanks.html"> -->
+
+        <!-- NUEVOS CAMPOS OBLIGATORIOS -->
+        
+        <div class="q">
+            <label for="nombre">Nombre y Apellido</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required />
+        </div>
+        
+
+
+        <div class="q">
+          <label for="pregunta-1">¿Cuándo se inauguró el Teatro El Círculo y con qué nombre original?</label>
+          <label for="pregunta-1">¿Qué tipo de espectáculos se realizan actualmente en este teatro?</label>
+          <label for="pregunta-1">¿Cómo es la acústica del teatro y por qué es tan reconocida a nivel internacional?</label>
+          <label for="pregunta-1">¿Qué importancia tiene este teatro para la cultura de la ciudad de Rosario?</label>
+          <label for="pregunta-1">Si tuvieras que ir caminando desde el Monumento a la Bandera hasta el teatro, ¿qué calles principales podrías tomar?</label>
+          <!-- <small>Escribe tu respuesta</small> -->
+          <textarea  id="pregunta-1" name="pregunta-1" placeholder="Tu respuesta…" rows="5" required></textarea>
+        </div>
+
+
+        <div class="actions">
+          <button type="reset" class="btn secondary" title="Borrar respuestas">Limpiar</button>
+          <button type="submit" class="btn" aria-label="Enviar respuestas">Enviar respuestas</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="card resources" aria-labelledby="recursos-h">
+      <div class="section-head">
+        <h2 id="recursos-h">Recursos</h2>
+        <span class="hint">Enlaces útiles para investigar</span>
+      </div>
+      <ul>
+          <li><a href="https://barullo.com.ar/teatro-el-circulo-un-lujo-para-la-ciudad/" target="_blank" rel="noopener">Enlace 1</a></li>
+          <li><a href="https://rosario.tur.ar/donde-ir/cultura/teatros/teatro-el-circulo" target="_blank" rel="noopener">Enlace 2</a></li>
+          <li><a href="https://rosario.italiani.it/teatro-el-circulo/" target="_blank" rel="noopener">Enlace 2</a></li>
+          <li><a href="https://www.teatroelcirculo.com/elteatro" target="_blank" rel="noopener">Enlace 2</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      Sistema Nervioso
+    </footer>
+  </main>
+
+  <script>
+    // Utilidad simple
+    function getVal(id){ return (document.getElementById(id)?.value || '').trim(); }
+
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', function(e){
+      // Validar todas completas; si falta alguna, cancelar envío
+      const ids = [
+        'curso','nombre',    // nuevos campos obligatorios
+        'pregunta-1','pregunta-2','pregunta-3','pregunta-4','pregunta-5','pregunta-6','pregunta-7','pregunta-final'
+      ];
+      const firstEmpty = ids.find(id => getVal(id) === '');
+      if (firstEmpty){
+        e.preventDefault();
+        alert('⚠️ Complete todas las respuestas antes de enviar.');
+        document.getElementById(firstEmpty).focus();
+        return;
+      }
+      // Si está todo completo, NO llamamos preventDefault → el form se envía a FormSubmit
+    });
+  </script>
+</body>
+</html>
